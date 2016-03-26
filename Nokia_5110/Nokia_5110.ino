@@ -11,6 +11,18 @@ void lcdCommand(byte command){
     digitalWrite(CE, HIGH);
 }
 
+/**
+ * @param contrast could be 1 to 17
+ */
+void contrast(short contrast){
+    byte list[17] = {0xAF, 0xB0, 0xB1, 0xB2, 0xB3, 0xB4, 0xB5, 0xB6, 0xB7, 0xB8, 0xB9, 0xBA, 0xBB, 0xBC, 0xBD, 0xBE, 0xBF};
+
+    if(contrast < 1 || contrast > 17)
+        return;
+
+    lcdCommand(list[contrast - 1]);
+}
+
 void setup() {
     pinMode(RST, OUTPUT);
     pinMode(CE, OUTPUT);
@@ -22,7 +34,7 @@ void setup() {
     digitalWrite(RST, HIGH);
 
     lcdCommand(0x21); // LCD extended commands
-    lcdCommand(0xB8); // set LCD Vop (contrast)
+    contrast(6);
     lcdCommand(0x04); // set temp coefficent
     lcdCommand(0x14); // LCD bias mode 1:40
     lcdCommand(0x20); // LCD basic commands
