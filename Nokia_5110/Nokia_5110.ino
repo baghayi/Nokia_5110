@@ -18,7 +18,7 @@ void transmitInformation(byte information){
     endTransmission();
 }
 
-void lcdCommand(byte command){
+void execute(byte command){
     digitalWrite(DC, LOW); // Data/Command (DC) pin is low for commands and high for data for displaying
 
     transmitInformation(command);
@@ -33,7 +33,7 @@ void setContrast(short contrast){
     if(contrast < 1 || contrast > 17)
         return;
 
-    lcdCommand(list[contrast - 1]);
+    execute(list[contrast - 1]);
 }
 
 void setup() {
@@ -46,12 +46,12 @@ void setup() {
     digitalWrite(RST, LOW);
     digitalWrite(RST, HIGH);
 
-    lcdCommand(0x21); // LCD extended commands
+    execute(0x21); // LCD extended commands
     setContrast(6);
-    lcdCommand(0x04); // set temp coefficent
-    lcdCommand(0x14); // LCD bias mode 1:40
-    lcdCommand(0x20); // LCD basic commands
-    lcdCommand(0x09); // LCD all segments on
+    execute(0x04); // set temp coefficent
+    execute(0x14); // LCD bias mode 1:40
+    execute(0x20); // LCD basic commands
+    execute(0x09); // LCD all segments on
 }
 
 void loop() {
