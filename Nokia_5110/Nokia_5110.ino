@@ -4,11 +4,20 @@
 #define DIN 5
 #define CLK 6
 
+void startTransmission(){
+    digitalWrite(CE, LOW);
+}
+
+void endTransmission(){
+    digitalWrite(CE, HIGH);
+}
+
 void lcdCommand(byte command){
     digitalWrite(DC, LOW); // DC pin is low for commands
-    digitalWrite(CE, LOW);
+
+    startTransmission();
     shiftOut(DIN, CLK, MSBFIRST, command); // transmit serial data
-    digitalWrite(CE, HIGH);
+    endTransmission();
 }
 
 /**
