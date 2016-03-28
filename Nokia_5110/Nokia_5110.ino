@@ -12,12 +12,16 @@ void endTransmission(){
     digitalWrite(CE, HIGH);
 }
 
-void lcdCommand(byte command){
-    digitalWrite(DC, LOW); // DC pin is low for commands
-
+void transmitInformation(byte information){
     startTransmission();
-    shiftOut(DIN, CLK, MSBFIRST, command); // transmit serial data
+    shiftOut(DIN, CLK, MSBFIRST, information);
     endTransmission();
+}
+
+void lcdCommand(byte command){
+    digitalWrite(DC, LOW); // Data/Command (DC) pin is low for commands and high for data for displaying
+
+    transmitInformation(command);
 }
 
 /**
