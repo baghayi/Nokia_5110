@@ -41,6 +41,10 @@ void extendedInstruction(){
     execute(0x21);
 }
 
+void basicInstruction(){
+    execute(0x20);
+}
+
 void setup() {
     pinMode(RST, OUTPUT);
     pinMode(CE, OUTPUT);
@@ -57,7 +61,8 @@ void setup() {
     extendedInstruction();
     execute(0x04); // set temp coefficent
     execute(0x14); // LCD bias mode 1:40
-    execute(0x20); // LCD basic commands
+    
+    basicInstruction();
     execute(0x09); // LCD all segments on
 }
 
