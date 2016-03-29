@@ -45,6 +45,35 @@ void basicInstruction(){
     execute(0x20);
 }
 
+/**
+ * Temperature Coefficient value could be one of 0, 1, 2 or 3;
+ */
+void setTemperatureCoefficient(unsigned short value){
+
+    if(value < 0 || value > 3)
+        return;
+
+    extendedInstruction();
+    
+    switch(value){
+        case 0:
+            execute(0x04);
+            break;
+        
+        case 1:
+            execute(0x05);
+            break;
+        
+        case 2:
+            execute(0x06);
+            break;
+        
+        case 3:
+            execute(0x07);
+            break;
+    }
+}
+
 void setup() {
     pinMode(RST, OUTPUT);
     pinMode(CE, OUTPUT);
@@ -57,9 +86,9 @@ void setup() {
 
     
     setContrast(6);
+    setTemperatureCoefficient(0);
     
     extendedInstruction();
-    execute(0x04); // set temp coefficent
     execute(0x14); // LCD bias mode 1:40
     
     basicInstruction();
