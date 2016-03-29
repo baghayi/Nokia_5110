@@ -33,6 +33,7 @@ void setContrast(short contrast){
     if(contrast < 1 || contrast > 17)
         return;
 
+    extendedInstruction();
     execute(list[contrast - 1]);
 }
 
@@ -50,8 +51,10 @@ void setup() {
     digitalWrite(RST, LOW);
     digitalWrite(RST, HIGH);
 
-    extendedInstruction();
+    
     setContrast(6);
+    
+    extendedInstruction();
     execute(0x04); // set temp coefficent
     execute(0x14); // LCD bias mode 1:40
     execute(0x20); // LCD basic commands
