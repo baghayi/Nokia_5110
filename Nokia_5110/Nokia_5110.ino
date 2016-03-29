@@ -36,6 +36,10 @@ void setContrast(short contrast){
     execute(list[contrast - 1]);
 }
 
+void extendedInstruction(){
+    execute(0x21);
+}
+
 void setup() {
     pinMode(RST, OUTPUT);
     pinMode(CE, OUTPUT);
@@ -46,7 +50,7 @@ void setup() {
     digitalWrite(RST, LOW);
     digitalWrite(RST, HIGH);
 
-    execute(0x21); // LCD extended commands
+    extendedInstruction();
     setContrast(6);
     execute(0x04); // set temp coefficent
     execute(0x14); // LCD bias mode 1:40
