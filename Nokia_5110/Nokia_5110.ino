@@ -25,16 +25,16 @@ void execute(byte command){
 }
 
 /**
- * @param contrast could be 1 to 17
+ * @param contrast could be 0 to 127
  */
-void setContrast(short contrast){
-    byte list[17] = {0xAF, 0xB0, 0xB1, 0xB2, 0xB3, 0xB4, 0xB5, 0xB6, 0xB7, 0xB8, 0xB9, 0xBA, 0xBB, 0xBC, 0xBD, 0xBE, 0xBF};
-
-    if(contrast < 1 || contrast > 17)
+void setContrast(unsigned short value){
+    if(value < 0 || value > 127)
         return;
 
     extendedInstruction();
-    execute(list[contrast - 1]);
+    
+    short leastValue = 128;
+    execute(byte(leastValue + value));
 }
 
 void extendedInstruction(){
@@ -85,7 +85,7 @@ void setup() {
     digitalWrite(RST, HIGH);
 
     
-    setContrast(6);
+    setContrast(50);
     setTemperatureCoefficient(0);
     
     extendedInstruction();
