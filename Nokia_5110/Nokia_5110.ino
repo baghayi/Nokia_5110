@@ -59,6 +59,11 @@ void setTemperatureCoefficient(unsigned short value){
     execute(byte(leastValue + value));
 }
 
+void reset(){
+    digitalWrite(RST, LOW);
+    digitalWrite(RST, HIGH);
+}
+
 void setup() {
     pinMode(RST, OUTPUT);
     pinMode(CE, OUTPUT);
@@ -66,9 +71,7 @@ void setup() {
     pinMode(DIN, OUTPUT);
     pinMode(CLK, OUTPUT);
 
-    digitalWrite(RST, LOW);
-    digitalWrite(RST, HIGH);
-
+    reset(); // At starting, its mandatuary to reset the lcd driver
     
     setContrast(50);
     setTemperatureCoefficient(0);
