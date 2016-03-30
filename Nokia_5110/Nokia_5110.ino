@@ -33,7 +33,7 @@ void setContrast(unsigned short value){
 
     extendedInstruction();
     
-    short leastValue = 128;
+    unsigned short leastValue = 128;
     execute(byte(leastValue + value));
 }
 
