@@ -33,7 +33,7 @@ void setContrast(unsigned short value){
 
     extendedInstruction();
     
-    unsigned short leastValue = 128;
+    const unsigned short leastValue = 128;
     execute(byte(leastValue + value));
 }
 
@@ -55,7 +55,7 @@ void setTemperatureCoefficient(unsigned short value){
 
     extendedInstruction();
 
-    unsigned short leastValue = 4;
+    const unsigned short leastValue = 4;
     execute(byte(leastValue + value));
 }
 
