@@ -5,8 +5,6 @@ void setup() {
     lcd.setContrast(50);
     lcd.setTemperatureCoefficient(0);
     
-//    extendedInstruction();
-//    execute(0x14); // LCD bias mode 1:40
     lcd.turnOnAllSegments();
 }
 

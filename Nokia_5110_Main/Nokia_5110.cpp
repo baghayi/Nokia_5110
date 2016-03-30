@@ -15,6 +15,9 @@ Nokia_5110::Nokia_5110(unsigned short RST, unsigned short CE, unsigned short DC,
     pinMode(CLK, OUTPUT);
 
     reset();
+
+    extendedInstruction();
+    execute(0x14); // LCD bias mode 1:40
 }
 
 void Nokia_5110::startTransmission(){
