@@ -54,24 +54,9 @@ void setTemperatureCoefficient(unsigned short value){
         return;
 
     extendedInstruction();
-    
-    switch(value){
-        case 0:
-            execute(0x04);
-            break;
-        
-        case 1:
-            execute(0x05);
-            break;
-        
-        case 2:
-            execute(0x06);
-            break;
-        
-        case 3:
-            execute(0x07);
-            break;
-    }
+
+    unsigned short leastValue = 4;
+    execute(byte(leastValue + value));
 }
 
 void setup() {
