@@ -76,3 +76,9 @@ void Nokia_5110::reset(){
     digitalWrite(_RST, LOW);
     digitalWrite(_RST, HIGH);
 }
+
+void Nokia_5110::turnOnAllSegments(){
+    basicInstruction();
+    execute(0x09);
+}
+

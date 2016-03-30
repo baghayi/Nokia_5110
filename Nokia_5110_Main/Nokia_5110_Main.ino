@@ -7,9 +7,7 @@ void setup() {
     
 //    extendedInstruction();
 //    execute(0x14); // LCD bias mode 1:40
-    
-//    basicInstruction();
-//    execute(0x09); // LCD all segments on
+    lcd.turnOnAllSegments();
 }
 
 void loop() {
