@@ -1,5 +1,6 @@
 #include "Arduino.h"
 #include "Nokia_5110.h"
+#include "Font.h"
 
 Nokia_5110::Nokia_5110(unsigned short RST, unsigned short CE, unsigned short DC, unsigned short DIN, unsigned short CLK){
     _RST = RST;
@@ -84,4 +85,37 @@ void Nokia_5110::turnOnAllSegments(){
     basicInstruction();
     execute(0x09);
 }
+
+void Nokia_5110::print(char text[]){
+    basicInstruction();
+    execute(0xC); //display normal mode
+    digitalWrite(_DC, HIGH); // Data/Command (DC) pin is low for commands and high for data for displaying
+    
+    int i = 0;
+    while(text[i]){
+        byte fontByte[5];
+        findCorespondingByte(text[i], fontByte);
+        
+        transmitInformation(fontByte[0]);
+        transmitInformation(fontByte[1]);
+        transmitInformation(fontByte[2]);
+        transmitInformation(fontByte[3]);
+        transmitInformation(fontByte[4]);
+
+        i++;
+    }
+}
+
+void Nokia_5110::clear(){
+    basicInstruction();
+    execute(0xC); //display normal mode
+    digitalWrite(_DC, HIGH); // Data/Command (DC) pin is low for commands and high for data for displaying
+
+    int i = 504;
+    while(i >= 0){
+        transmitInformation(0x0);
+        i--;
+    }
+}
+
 

@@ -10,6 +10,8 @@ class Nokia_5110 {
         void setContrast(unsigned short value);
         void setTemperatureCoefficient(unsigned short value);
         void turnOnAllSegments();
+        void print(char text[]);
+        void clear();
         
     private:
         void startTransmission();
