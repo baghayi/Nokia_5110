@@ -8,7 +8,7 @@ void setup() {
     
 //    lcd.turnOnAllSegments();
     lcd.clear();
-    lcd.print("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.+-=");
+    lcd.print("ABCDEFGHIJKLMNOP QRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.+-=");
 }
 
 void loop() {
