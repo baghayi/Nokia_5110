@@ -8,7 +8,7 @@ void setup() {
     
 //    lcd.turnOnAllSegments();
     lcd.clear();
-    lcd.print("ABCDEFGHIJKLMNOP QRSTUVWXYZabcdef ghijklmnopqrstuv wxyz1234567890.+-=!:?");
+    lcd.print("Hossein Baghayi:D");
 }
 
 void loop() {

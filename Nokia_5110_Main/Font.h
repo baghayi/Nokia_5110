@@ -1,4 +1,6 @@
-void findCorespondingByte(char character, byte (&result)[5]){
+void findCorespondingByte(char character, byte (&result)[5], unsigned short int &byteArrayLength){
+    byteArrayLength = 5;
+
     if(character == 'A'){
         result[0] = 0x7c;
         result[1] = 0x12;
@@ -48,11 +50,8 @@ void findCorespondingByte(char character, byte (&result)[5]){
         result[3] = 0x8;
         result[4] = 0x7f;
     }else if (character == 'I'){
-        result[0] = 0x0;
-        result[1] = 0x0;
-        result[2] = 0x7f;
-        result[3] = 0x0;
-        result[4] = 0x0;
+        result[0] = 0x7f;
+        byteArrayLength = 1;
     }else if (character == 'J'){
         result[0] = 0x30;
         result[1] = 0x40;
@@ -162,11 +161,8 @@ void findCorespondingByte(char character, byte (&result)[5]){
         result[3] = 0x8;
         result[4] = 0x8;
     }else if (character == '!'){
-        result[0] = 0x0;
-        result[1] = 0x0;
-        result[2] = 0x5f;
-        result[3] = 0x0;
-        result[4] = 0x0;
+        result[0] = 0x5f;
+        byteArrayLength = 1;
     }else if (character == '?'){
         result[0] = 0x2;
         result[1] = 0x1;
@@ -174,11 +170,8 @@ void findCorespondingByte(char character, byte (&result)[5]){
         result[3] = 0x9;
         result[4] = 0x6;
     }else if (character == '.'){
-        result[0] = 0x0;
-        result[1] = 0x0;
-        result[2] = 0x40;
-        result[3] = 0x0;
-        result[4] = 0x0;
+        result[0] = 0x40;
+        byteArrayLength = 1;
     }else if (character == '1'){
         result[0] = 0x42;
         result[1] = 0x42;
@@ -246,11 +239,8 @@ void findCorespondingByte(char character, byte (&result)[5]){
         result[3] = 0x8;
         result[4] = 0x8;
     }else if (character == ':'){
-        result[0] = 0x0;
-        result[1] = 0x0;
-        result[2] = 0x14;
-        result[3] = 0x0;
-        result[4] = 0x0;
+        result[0] = 0x14;
+        byteArrayLength = 1;
     }else if (character == '='){
         result[0] = 0x14;
         result[1] = 0x14;
@@ -260,9 +250,7 @@ void findCorespondingByte(char character, byte (&result)[5]){
     }else if (character == ' '){ // space
         result[0] = 0x0;
         result[1] = 0x0;
-        result[2] = 0x0;
-        result[3] = 0x0;
-        result[4] = 0x0;
+        byteArrayLength = 2;
     }else if (character == 'a'){
         result[0] = 0x20;
         result[1] = 0x54;
@@ -312,17 +300,16 @@ void findCorespondingByte(char character, byte (&result)[5]){
         result[3] = 0x8;
         result[4] = 0x70;
     }else if (character == 'i'){
-        result[0] = 0x0;
-        result[1] = 0x44;
-        result[2] = 0x7d;
-        result[3] = 0x40;
-        result[4] = 0x0;
+        result[0] = 0x44;
+        result[1] = 0x7d;
+        result[2] = 0x40;
+        byteArrayLength = 3;
     }else if (character == 'j'){
         result[0] = 0x20;
         result[1] = 0x40;
         result[2] = 0x44;
         result[3] = 0x3d;
-        result[4] = 0x0;
+        byteArrayLength = 4;
     }else if (character == 'k'){
         result[0] = 0x7f;
         result[1] = 0x10;
@@ -330,11 +317,10 @@ void findCorespondingByte(char character, byte (&result)[5]){
         result[3] = 0x28;
         result[4] = 0x44;
     }else if (character == 'l'){
-        result[0] = 0x0;
-        result[1] = 0x41;
-        result[2] = 0x7f;
-        result[3] = 0x40;
-        result[4] = 0x0;
+        result[0] = 0x41;
+        result[1] = 0x7f;
+        result[2] = 0x40;
+        byteArrayLength = 3;
     }else if (character == 'm'){
         result[0] = 0x7c;
         result[1] = 0x4;
@@ -378,11 +364,11 @@ void findCorespondingByte(char character, byte (&result)[5]){
         result[3] = 0x54;
         result[4] = 0x24;
     }else if (character == 't'){
-        result[0] = 0x0;
-        result[1] = 0x2;
-        result[2] = 0x3f;
-        result[3] = 0x42;
-        result[4] = 0x40;
+        result[0] = 0x2;
+        result[1] = 0x3f;
+        result[2] = 0x42;
+        result[3] = 0x40;
+        byteArrayLength = 4;
     }else if (character == 'u'){
         result[0] = 0x3c;
         result[1] = 0x40;

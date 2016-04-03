@@ -94,13 +94,15 @@ void Nokia_5110::print(char text[]){
     int i = 0;
     while(text[i]){
         byte fontByte[5];
-        findCorespondingByte(text[i], fontByte);
+        unsigned short int byteArrayLength;
+
+        findCorespondingByte(text[i], fontByte, byteArrayLength);
         
-        transmitInformation(fontByte[0]);
-        transmitInformation(fontByte[1]);
-        transmitInformation(fontByte[2]);
-        transmitInformation(fontByte[3]);
-        transmitInformation(fontByte[4]);
+        for(short int i = 0; i < byteArrayLength ;i++){
+            transmitInformation(fontByte[i]);
+        }
+
+        transmitInformation(0x0); // add an empty line after each chars
 
         i++;
     }
