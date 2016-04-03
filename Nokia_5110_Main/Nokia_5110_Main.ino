@@ -7,16 +7,15 @@ void setup() {
     lcd.setTemperatureCoefficient(0);
     
 //    lcd.turnOnAllSegments();
-    lcd.clear();
+    lcd.println("Hossein");
+    lcd.println("Mamaly Reza");
+    lcd.println("Kazem");
+    lcd.println("Adele");
+    lcd.println("Sidigha");
     /*
-     *lcd.println("Hossein");
-     *lcd.println("Mamaly Reza");
-     *lcd.println("Kazem");
-     *lcd.println("Adele");
-     *lcd.println("Sidigha");
+     *lcd.setCursor(28, 2);
+     *lcd.println("Salam");
      */
-    lcd.setCursor(28, 2);
-    lcd.println("Salam");
 }
 
 void loop() {

@@ -79,6 +79,8 @@ void Nokia_5110::setTemperatureCoefficient(unsigned short value){
 void Nokia_5110::reset(){
     digitalWrite(_RST, LOW);
     digitalWrite(_RST, HIGH);
+
+    clear();
 }
 
 void Nokia_5110::turnOnAllSegments(){
