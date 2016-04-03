@@ -8,7 +8,11 @@ void setup() {
     
 //    lcd.turnOnAllSegments();
     lcd.clear();
-    lcd.print("Hossein Baghayi:D");
+    lcd.print("Hossein               ");
+    lcd.print("Mamaly Reza       ");
+    lcd.print("Kazem                  ");
+    lcd.print("Adele                   ");
+    lcd.print("Sidigha");
 }
 
 void loop() {
