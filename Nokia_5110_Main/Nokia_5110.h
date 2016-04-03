@@ -11,7 +11,9 @@ class Nokia_5110 {
         void setTemperatureCoefficient(unsigned short value);
         void turnOnAllSegments();
         void print(char text[]);
+        void println(char text[]);
         void clear();
+        void setCursor(unsigned int xPosition, unsigned int yPosition);
         
     private:
         void startTransmission();
@@ -27,6 +29,11 @@ class Nokia_5110 {
         unsigned short _DC;
         unsigned short _DIN;
         unsigned short _CLK;
+
+        unsigned short int _cursorPositionY = 0;
+        unsigned short int _cursorPositionX = 0;
+        void cursorPositionX(unsigned int addToX);
+        void cursorPositionY(unsigned int addToY);
 
 };
 

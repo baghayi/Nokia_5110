@@ -87,6 +87,8 @@ void Nokia_5110::turnOnAllSegments(){
 }
 
 void Nokia_5110::print(char text[]){
+    setCursor(_cursorPositionX, _cursorPositionY);
+
     basicInstruction();
     execute(0xC); //display normal mode
     digitalWrite(_DC, HIGH); // Data/Command (DC) pin is low for commands and high for data for displaying
@@ -103,9 +105,60 @@ void Nokia_5110::print(char text[]){
         }
 
         transmitInformation(0x0); // add an empty line after each chars
+        cursorPositionX(byteArrayLength + 1);
 
         i++;
     }
+
+}
+
+void Nokia_5110::println(char text[]){
+    print(text);
+    cursorPositionY(1);
+}
+
+void Nokia_5110::cursorPositionX(unsigned int addToX){
+    if(addToX == 0)
+        return;
+    
+    _cursorPositionX++;
+
+    if(_cursorPositionX > 83){
+        cursorPositionY(1);
+        _cursorPositionX = 0;
+    }
+
+    cursorPositionX(--addToX);
+}
+
+void Nokia_5110::cursorPositionY(unsigned int addToY){
+    if(addToY == 0)
+        return;
+
+    _cursorPositionY++;
+    _cursorPositionX = 0; // for each y incrementation, reset the x axis :D
+
+    if(_cursorPositionY > 5){
+        _cursorPositionY = 0;
+    }
+
+    cursorPositionY(--addToY);
+}
+
+void Nokia_5110::setCursor(unsigned int xPosition, unsigned int yPosition){
+    _cursorPositionX = xPosition;
+    _cursorPositionY = yPosition;
+
+    basicInstruction();
+
+    //set x position
+    unsigned short int leastXPositionValue = 128;
+    execute(byte(leastXPositionValue + xPosition));
+
+
+    //set y position
+    unsigned short int leastYPositionValue = 64;
+    execute(byte(leastYPositionValue + yPosition));
 }
 
 void Nokia_5110::clear(){

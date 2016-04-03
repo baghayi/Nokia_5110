@@ -8,11 +8,15 @@ void setup() {
     
 //    lcd.turnOnAllSegments();
     lcd.clear();
-    lcd.print("Hossein               ");
-    lcd.print("Mamaly Reza       ");
-    lcd.print("Kazem                  ");
-    lcd.print("Adele                   ");
-    lcd.print("Sidigha");
+    /*
+     *lcd.println("Hossein");
+     *lcd.println("Mamaly Reza");
+     *lcd.println("Kazem");
+     *lcd.println("Adele");
+     *lcd.println("Sidigha");
+     */
+    lcd.setCursor(28, 2);
+    lcd.println("Salam");
 }
 
 void loop() {
