@@ -443,6 +443,12 @@ void findCorespondingByte(char character, byte (&result)[5], unsigned short int 
         result[2] = 0x5d;
         result[3] = 0x55;
         result[4] = 0x1e;
+    }else if (character == '#'){
+        result[0] = 0x14;
+        result[1] = 0x3e;
+        result[2] = 0x14;
+        result[3] = 0x3e;
+        result[4] = 0x14;
     }
     else{ // default is question mark
         result[0] = 0x2;
