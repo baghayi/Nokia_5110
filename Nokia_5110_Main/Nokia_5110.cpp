@@ -91,12 +91,16 @@ void Nokia_5110::turnOnAllSegments(){
     execute(0x09);
 }
 
+void Nokia_5110::initializeForSendingData(){
+    digitalWrite(_DC, HIGH);
+}
+
 void Nokia_5110::print(char text[]){
     setCursor(_cursorPositionX, _cursorPositionY);
 
     basicInstruction();
     execute(0xC); //display normal mode
-    digitalWrite(_DC, HIGH); // Data/Command (DC) pin is low for commands and high for data for displaying
+    initializeForSendingData();
     
     int i = 0;
     while(text[i]){
