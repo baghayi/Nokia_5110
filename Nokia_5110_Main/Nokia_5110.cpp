@@ -188,4 +188,21 @@ void Nokia_5110::clear(){
     }
 }
 
+void Nokia_5110::clear(unsigned int inRow, unsigned int fromColumn, unsigned int toColumn){
+    // toColumn has to be more than from Column, otherwise flip the values :D
+    unsigned int temp;
+    if(fromColumn > toColumn){
+        temp       = fromColumn;
+        fromColumn = toColumn;
+        toColumn   = temp;
+    }
+
+    unsigned int counter = fromColumn;
+    while(counter <= toColumn){
+        setCursor(counter, inRow);
+        initializeForSendingData();
+        transmitInformation(0x0);
+        counter++;
+    }
+}
 

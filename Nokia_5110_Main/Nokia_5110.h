@@ -13,6 +13,7 @@ class Nokia_5110 {
         void print(char text[]);
         void println(char text[]);
         void clear();
+        void clear(unsigned int inRow, unsigned int fromColumn, unsigned int toColumn);
         void setCursor(unsigned int xPosition, unsigned int yPosition);
         
     private:
