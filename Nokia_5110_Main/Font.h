@@ -437,6 +437,12 @@ void findCorespondingByte(char character, byte (&result)[5], unsigned short int 
         result[1] = 0x22;
         result[2] = 0x1c;
         byteArrayLength = 3;
+    }else if (character == '@'){
+        result[0] = 0x3e;
+        result[1] = 0x41;
+        result[2] = 0x5d;
+        result[3] = 0x55;
+        result[4] = 0x1e;
     }
     else{ // default is question mark
         result[0] = 0x2;
