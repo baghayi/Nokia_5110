@@ -23,6 +23,7 @@ class Nokia_5110 {
         void extendedInstruction();
         void basicInstruction();
         void reset();
+        void initializeForSendingCommand();
 
         unsigned short _RST;
         unsigned short _CE;

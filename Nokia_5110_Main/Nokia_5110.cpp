@@ -36,9 +36,12 @@ void Nokia_5110::transmitInformation(byte information){
 }
 
 void Nokia_5110::execute(byte command){
-    digitalWrite(_DC, LOW); // Data/Command (DC) pin is low for commands and high for data for displaying
-
+    initializeForSendingCommand();
     transmitInformation(command);
+}
+
+void Nokia_5110::initializeForSendingCommand(){
+    digitalWrite(_DC, LOW);
 }
 
 /**
