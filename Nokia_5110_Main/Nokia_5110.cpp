@@ -179,7 +179,7 @@ void Nokia_5110::setCursor(unsigned int xPosition, unsigned int yPosition){
 void Nokia_5110::clear(){
     basicInstruction();
     execute(0xC); //display normal mode
-    digitalWrite(_DC, HIGH); // Data/Command (DC) pin is low for commands and high for data for displaying
+    initializeForSendingData();
 
     int i = 504;
     while(i >= 0){
