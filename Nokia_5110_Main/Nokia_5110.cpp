@@ -114,7 +114,7 @@ void Nokia_5110::print(char text[]){
         }
 
         transmitInformation(0x0); // add an empty line after each chars
-        cursorPositionX(byteArrayLength + 1);
+        moveCursorInXAxis(byteArrayLength + 1);
 
         i++;
     }
@@ -126,8 +126,11 @@ void Nokia_5110::println(char text[]){
     cursorPositionY(1);
 }
 
-void Nokia_5110::cursorPositionX(unsigned int addToX){
-    if(addToX == 0)
+/**
+ * Moves cursor in x axis by a number sepcified in method's parameter
+ */
+void Nokia_5110::moveCursorInXAxis(unsigned int by){
+    if(by == 0)
         return;
     
     _cursorPositionX++;
@@ -137,7 +140,7 @@ void Nokia_5110::cursorPositionX(unsigned int addToX){
         _cursorPositionX = 0;
     }
 
-    cursorPositionX(--addToX);
+    moveCursorInXAxis(--by);
 }
 
 void Nokia_5110::cursorPositionY(unsigned int addToY){
