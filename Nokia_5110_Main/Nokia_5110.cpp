@@ -177,8 +177,6 @@ void Nokia_5110::setCursor(unsigned int xPosition, unsigned int yPosition){
 }
 
 void Nokia_5110::clear(){
-    basicInstruction();
-    execute(0xC); //display normal mode
     initializeForSendingData();
 
     int i = 504;
