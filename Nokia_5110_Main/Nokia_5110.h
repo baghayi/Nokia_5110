@@ -34,7 +34,7 @@ class Nokia_5110 {
 
         unsigned short int _cursorPositionY = 0;
         unsigned short int _cursorPositionX = 0;
-        void cursorPositionX(unsigned int addToX);
+        void moveCursorInXAxis(unsigned int by);
         void moveCursorInYAxis(unsigned int by);
 
 };
