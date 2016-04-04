@@ -415,6 +415,18 @@ void findCorespondingByte(char character, byte (&result)[5], unsigned short int 
         result[1] = 0x41;
         result[2] = 0x7f;
         byteArrayLength = 3;
+    }else if (character == '{'){
+        result[0] = 0x8;
+        result[1] = 0x8;
+        result[2] = 0x36;
+        result[3] = 0x41;
+        result[4] = 0x41;
+    }else if (character == '}'){
+        result[0] = 0x41;
+        result[1] = 0x41;
+        result[2] = 0x36;
+        result[3] = 0x8;
+        result[4] = 0x8;
     }
     else{ // default is question mark
         result[0] = 0x2;
