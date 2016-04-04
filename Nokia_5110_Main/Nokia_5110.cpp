@@ -123,7 +123,7 @@ void Nokia_5110::print(char text[]){
 
 void Nokia_5110::println(char text[]){
     print(text);
-    cursorPositionY(1);
+    moveCursorInYAxis(1);
 }
 
 /**
@@ -136,15 +136,18 @@ void Nokia_5110::moveCursorInXAxis(unsigned int by){
     _cursorPositionX++;
 
     if(_cursorPositionX > 83){
-        cursorPositionY(1);
+        moveCursorInYAxis(1);
         _cursorPositionX = 0;
     }
 
     moveCursorInXAxis(--by);
 }
 
-void Nokia_5110::cursorPositionY(unsigned int addToY){
-    if(addToY == 0)
+/**
+ * Moves cursor in y axis by a number sepcified in method's parameter
+ */
+void Nokia_5110::moveCursorInYAxis(unsigned int by){
+    if(by == 0)
         return;
 
     _cursorPositionY++;
@@ -154,7 +157,7 @@ void Nokia_5110::cursorPositionY(unsigned int addToY){
         _cursorPositionY = 0;
     }
 
-    cursorPositionY(--addToY);
+    moveCursorInYAxis(--by);
 }
 
 void Nokia_5110::setCursor(unsigned int xPosition, unsigned int yPosition){
