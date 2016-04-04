@@ -204,5 +204,7 @@ void Nokia_5110::clear(unsigned int inRow, unsigned int fromColumn, unsigned int
         transmitInformation(0x0);
         counter++;
     }
+
+    setCursor(fromColumn, inRow);
 }
 
