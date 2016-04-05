@@ -487,9 +487,13 @@ void findCorespondingByte(char character, byte (&result)[5], unsigned short int 
         result[1] = 0x76;
         result[2] = 0x36;
         byteArrayLength = 3;
+    }else if (character == '/'){
+        result[0] = 0x20;
+        result[1] = 0x10;
+        result[2] = 0x8;
+        result[3] = 0x4;
+        result[4] = 0x2;
     }
-
-
     else{ // default is question mark
         result[0] = 0x2;
         result[1] = 0x1;
