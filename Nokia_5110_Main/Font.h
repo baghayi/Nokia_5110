@@ -461,6 +461,12 @@ void findCorespondingByte(char character, byte (&result)[5], unsigned short int 
         result[2] = 0x8;
         result[3] = 0x34;
         result[4] = 0x32;
+    }else if (character == '^'){
+        result[0] = 0x4;
+        result[1] = 0x2;
+        result[2] = 0x1;
+        result[3] = 0x2;
+        result[4] = 0x4;
     }
     else{ // default is question mark
         result[0] = 0x2;
