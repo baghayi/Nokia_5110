@@ -239,8 +239,9 @@ void findCorespondingByte(char character, byte (&result)[5], unsigned short int 
         result[3] = 0x8;
         result[4] = 0x8;
     }else if (character == ':'){
-        result[0] = 0x14;
-        byteArrayLength = 1;
+        result[0] = 0x36;
+        result[1] = 0x36;
+        byteArrayLength = 2;
     }else if (character == '='){
         result[0] = 0x14;
         result[1] = 0x14;
