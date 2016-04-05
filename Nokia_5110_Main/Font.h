@@ -473,6 +473,9 @@ void findCorespondingByte(char character, byte (&result)[5], unsigned short int 
         result[2] = 0x40;
         result[3] = 0x40;
         result[4] = 0x40;
+    }else if (character == '\''){
+        result[0] = 0x7;
+        byteArrayLength = 1;
     }
     else{ // default is question mark
         result[0] = 0x2;
