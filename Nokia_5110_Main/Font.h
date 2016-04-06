@@ -493,7 +493,14 @@ void findCorespondingByte(char character, byte (&result)[5], unsigned short int 
         result[2] = 0x8;
         result[3] = 0x4;
         result[4] = 0x2;
+    }else if (character == '\\'){
+        result[0] = 0x2;
+        result[1] = 0x4;
+        result[2] = 0x8;
+        result[3] = 0x10;
+        result[4] = 0x20;
     }
+
     else{ // default is question mark
         result[0] = 0x2;
         result[1] = 0x1;
