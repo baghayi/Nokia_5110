@@ -500,14 +500,14 @@ void findCorespondingByte(char character, byte (&result)[5], unsigned short int 
         result[3] = 0x10;
         result[4] = 0x20;
     }else if (character == '<'){
-        result[0] = 0x8;
-        result[1] = 0x14;
-        result[2] = 0x22;
+        result[0] = 0x10;
+        result[1] = 0x28;
+        result[2] = 0x44;
         byteArrayLength = 3;
     }else if (character == '>'){
-        result[0] = 0x22;
-        result[1] = 0x14;
-        result[2] = 0x8;
+        result[0] = 0x44;
+        result[1] = 0x28;
+        result[2] = 0x10;
         byteArrayLength = 3;
     }
 
