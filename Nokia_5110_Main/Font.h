@@ -515,6 +515,10 @@ void findCorespondingByte(char character, byte (&result)[5], unsigned short int 
         result[2] = 0x3f;
         result[3] = 0xc;
         result[4] = 0x12;
+    }else if (character == '`'){
+        result[0] = 0x1;
+        result[1] = 0x2;
+        byteArrayLength = 2;
     }
     else{ // default is question mark
         result[0] = 0x2;
