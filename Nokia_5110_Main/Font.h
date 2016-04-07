@@ -528,6 +528,14 @@ void findCorespondingByte(char character, byte (&result)[7], unsigned short int 
         result[5] = 0x2;
         result[6] = 0x1;
         byteArrayLength = 7;
+    }else if (character == '&'){
+        result[0] = 0x30;
+        result[1] = 0x4a;
+        result[2] = 0x45;
+        result[3] = 0x2a;
+        result[4] = 0x10;
+        result[5] = 0x28;
+        byteArrayLength = 6;
     }
     else{ // default is question mark
         result[0] = 0x2;
