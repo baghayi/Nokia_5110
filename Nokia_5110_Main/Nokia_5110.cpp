@@ -104,7 +104,7 @@ void Nokia_5110::print(char text[]){
     
     int i = 0;
     while(text[i]){
-        byte fontByte[5];
+        byte fontByte[7];
         unsigned short int byteArrayLength;
 
         findCorespondingByte(text[i], fontByte, byteArrayLength);
