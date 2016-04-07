@@ -1,4 +1,4 @@
-void findCorespondingByte(char character, byte (&result)[5], unsigned short int &byteArrayLength){
+void findCorespondingByte(char character, byte (&result)[7], unsigned short int &byteArrayLength){
     byteArrayLength = 5;
 
     if(character == 'A'){
@@ -519,6 +519,15 @@ void findCorespondingByte(char character, byte (&result)[5], unsigned short int 
         result[0] = 0x1;
         result[1] = 0x2;
         byteArrayLength = 2;
+    }else if (character == '~'){
+        result[0] = 0x2;
+        result[1] = 0x1;
+        result[2] = 0x1;
+        result[3] = 0x3;
+        result[4] = 0x2;
+        result[5] = 0x2;
+        result[6] = 0x1;
+        byteArrayLength = 7;
     }
     else{ // default is question mark
         result[0] = 0x2;
