@@ -95,6 +95,15 @@ void Nokia_5110::initializeForSendingData(){
     digitalWrite(_DC, HIGH);
 }
 
+void Nokia_5110::makeEnoughSpaceForPrinting(unsigned short int newCharacterLength){
+    if((newCharacterLength + _cursorPositionX) < 83)
+        return;
+
+    moveCursorInYAxis(1);
+    setCursor(_cursorPositionX, _cursorPositionY);
+    initializeForSendingData();
+}
+
 void Nokia_5110::print(char text[]){
     setCursor(_cursorPositionX, _cursorPositionY);
 
@@ -108,6 +117,7 @@ void Nokia_5110::print(char text[]){
         unsigned short int byteArrayLength;
 
         findCorespondingByte(text[i], fontByte, byteArrayLength);
+        makeEnoughSpaceForPrinting(byteArrayLength);
         
         for(short int i = 0; i < byteArrayLength ;i++){
             transmitInformation(fontByte[i]);

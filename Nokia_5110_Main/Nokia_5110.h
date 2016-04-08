@@ -26,6 +26,7 @@ class Nokia_5110 {
         void reset();
         void initializeForSendingCommand();
         void initializeForSendingData();
+        void makeEnoughSpaceForPrinting(unsigned short int newCharacterLength);
 
         unsigned short _RST;
         unsigned short _CE;
