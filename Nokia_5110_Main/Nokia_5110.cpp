@@ -84,6 +84,8 @@ void Nokia_5110::reset(){
     digitalWrite(_RST, HIGH);
 
     clear();
+
+    setDisplayMode(Nokia_5110::Display_Mode::NORMAL);
 }
 
 void Nokia_5110::initializeForSendingData(){
@@ -102,7 +104,6 @@ void Nokia_5110::makeEnoughSpaceForPrinting(unsigned short int newCharacterLengt
 void Nokia_5110::print(char text[]){
     setCursor(_cursorPositionX, _cursorPositionY);
 
-    setDisplayMode(Nokia_5110::Display_Mode::NORMAL);
     initializeForSendingData();
     
     int i = 0;
