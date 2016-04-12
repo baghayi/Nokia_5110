@@ -11,7 +11,6 @@ class Nokia_5110 {
         Nokia_5110(unsigned short RST, unsigned short CE, unsigned short DC, unsigned short DIN, unsigned short CLK);
         void setContrast(unsigned short value);
         void setTemperatureCoefficient(unsigned short value);
-        void turnOnAllSegments();
         void print(char text[]);
         void println(char text[]);
         void clear();

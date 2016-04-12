@@ -86,11 +86,6 @@ void Nokia_5110::reset(){
     clear();
 }
 
-void Nokia_5110::turnOnAllSegments(){
-    basicInstruction();
-    execute(0x09);
-}
-
 void Nokia_5110::initializeForSendingData(){
     digitalWrite(_DC, HIGH);
 }
