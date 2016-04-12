@@ -107,8 +107,7 @@ void Nokia_5110::makeEnoughSpaceForPrinting(unsigned short int newCharacterLengt
 void Nokia_5110::print(char text[]){
     setCursor(_cursorPositionX, _cursorPositionY);
 
-    basicInstruction();
-    execute(0xC); //display normal mode
+    setDisplayMode(Nokia_5110::Display_Mode::NORMAL);
     initializeForSendingData();
     
     int i = 0;
@@ -218,3 +217,8 @@ void Nokia_5110::clear(unsigned int inRow, unsigned int fromColumn, unsigned int
     setCursor(fromColumn, inRow);
 }
 
+
+void Nokia_5110::setDisplayMode(display_mode value){
+    basicInstruction();
+    execute(value);
+}

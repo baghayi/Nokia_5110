@@ -3,6 +3,8 @@
 
 #include "Arduino.h"
 
+typedef byte display_mode;
+
 class Nokia_5110 {
 
     public:
@@ -15,6 +17,15 @@ class Nokia_5110 {
         void clear();
         void clear(unsigned int inRow, unsigned int fromColumn, unsigned int toColumn);
         void setCursor(unsigned int xPosition, unsigned int yPosition);
+        
+        class Display_Mode {
+            public:
+                static const display_mode BLANK = 0x8;
+                static const display_mode NORMAL = 0xc;
+                static const display_mode ALL_SEGMENTS_ON = 0x9;
+                static const display_mode INVERSE_VIDEO = 0xd;
+        };
+        void setDisplayMode(display_mode mode);
         
     private:
         void startTransmission();
