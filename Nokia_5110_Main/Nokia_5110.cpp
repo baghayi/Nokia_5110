@@ -86,6 +86,8 @@ void Nokia_5110::reset(){
     clear();
 
     setDisplayMode(Nokia_5110::Display_Mode::NORMAL);
+
+    setContrast(60);
 }
 
 void Nokia_5110::initializeForSendingData(){
