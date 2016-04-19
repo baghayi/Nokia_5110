@@ -17,6 +17,10 @@ Nokia_5110::Nokia_5110(unsigned short RST, unsigned short CE, unsigned short DC,
 
     reset();
 
+    clear();
+    setDisplayMode(Nokia_5110::Display_Mode::NORMAL);
+    setContrast(60);
+
     extendedInstruction();
     execute(0x14); // LCD bias mode 1:40
 }
@@ -82,12 +86,6 @@ void Nokia_5110::setTemperatureCoefficient(unsigned short value){
 void Nokia_5110::reset(){
     digitalWrite(_RST, LOW);
     digitalWrite(_RST, HIGH);
-
-    clear();
-
-    setDisplayMode(Nokia_5110::Display_Mode::NORMAL);
-
-    setContrast(60);
 }
 
 void Nokia_5110::initializeForSendingData(){
