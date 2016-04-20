@@ -19,7 +19,7 @@ Nokia_5110::Nokia_5110(unsigned short RST, unsigned short CE, unsigned short DC,
 
     clear();
     setDisplayMode(Display_Mode::NORMAL);
-    setBiasSystem(Nokia_5110::Mux_Rate::FORTY);
+    setBiasSystem(Mux_Rate::FORTY);
     setContrast(60);
 }
 

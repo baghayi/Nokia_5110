@@ -3,8 +3,7 @@
 
 #include "Arduino.h"
 #include "Display_Mode.h"
-
-typedef byte mux_rate;
+#include "Mux_Rate.h"
 
 class Nokia_5110 {
 
@@ -18,18 +17,6 @@ class Nokia_5110 {
         void clear(unsigned int inRow, unsigned int fromColumn, unsigned int toColumn);
         void setCursor(unsigned int xPosition, unsigned int yPosition);
         void setDisplayMode(display_mode mode);
-
-        class Mux_Rate {
-            public:
-                static const mux_rate HUNDRED = 0x10;
-                static const mux_rate EIGHTY = 0x11;
-                static const mux_rate SIXTY_FIVE = 0x12;
-                static const mux_rate FORTY_EIGHT = 0x13;
-                static const mux_rate FORTY = 0x14;
-                static const mux_rate TWENTY_FOUR = 0x15;
-                static const mux_rate EIGHTEEN = 0x16;
-                static const mux_rate TEN = 0x17;
-        };
         void setBiasSystem(mux_rate rate);
         
     private:
