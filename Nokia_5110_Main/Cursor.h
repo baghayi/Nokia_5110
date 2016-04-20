@@ -12,8 +12,8 @@ class Cursor {
 
     public:
         void setCursor(position x, position y);
-        void moveInXAxis(position by);
-        void moveInYAxis(position by);
+        void moveXAxis(position by);
+        void moveYAxis(position by);
         Position getPosition();
 
     private:

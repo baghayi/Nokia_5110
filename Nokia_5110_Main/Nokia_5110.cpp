@@ -96,7 +96,7 @@ void Nokia_5110::makeEnoughSpaceForPrinting(unsigned short int newCharacterLengt
     if((newCharacterLength + _cursor.getPosition().x) < 83)
         return;
 
-    _cursor.moveInYAxis(1);
+    _cursor.moveYAxis(1);
     setCursor(_cursor.getPosition().x, _cursor.getPosition().y);
     initializeForSendingData();
 }
@@ -119,7 +119,7 @@ void Nokia_5110::print(char text[]){
         }
 
         transmitInformation(0x0); // add an empty line after each chars
-        _cursor.moveInXAxis(byteArrayLength + 1);
+        _cursor.moveXAxis(byteArrayLength + 1);
 
         i++;
     }
@@ -128,7 +128,7 @@ void Nokia_5110::print(char text[]){
 
 void Nokia_5110::println(char text[]){
     print(text);
-    _cursor.moveInYAxis(1);
+    _cursor.moveYAxis(1);
 }
 
 void Nokia_5110::setCursor(position x, position y){

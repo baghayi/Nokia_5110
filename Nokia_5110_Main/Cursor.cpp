@@ -8,24 +8,24 @@ void Cursor::setCursor(position x, position y){
 /**
  * Moves cursor in x axis by a number sepcified in method's parameter
  */
-void Cursor::moveInXAxis(position by){
+void Cursor::moveXAxis(position by){
     if(by == 0)
         return;
     
     _x++;
 
     if(_x > 83){
-        moveInYAxis(1);
+        moveYAxis(1);
         _x = 0;
     }
 
-    moveInXAxis(--by);
+    moveXAxis(--by);
 }
 
 /**
  * Moves cursor in y axis by a number sepcified in method's parameter
  */
-void Cursor::moveInYAxis(position by){
+void Cursor::moveYAxis(position by){
     if(by == 0)
         return;
 
@@ -36,7 +36,7 @@ void Cursor::moveInYAxis(position by){
         _y = 0;
     }
 
-    moveInYAxis(--by);
+    moveYAxis(--by);
 }
 
 /**
