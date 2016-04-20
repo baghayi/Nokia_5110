@@ -15,6 +15,8 @@ Nokia_5110::Nokia_5110(unsigned short RST, unsigned short CE, unsigned short DC,
     pinMode(DIN, OUTPUT);
     pinMode(CLK, OUTPUT);
 
+    _cursor = Cursor();
+
     reset();
 
     clear();
@@ -91,16 +93,16 @@ void Nokia_5110::initializeForSendingData(){
 }
 
 void Nokia_5110::makeEnoughSpaceForPrinting(unsigned short int newCharacterLength){
-    if((newCharacterLength + _cursorPositionX) < 83)
+    if((newCharacterLength + _cursor.getPosition().x) < 83)
         return;
 
-    moveCursorInYAxis(1);
-    setCursor(_cursorPositionX, _cursorPositionY);
+    _cursor.moveInYAxis(1);
+    setCursor(_cursor.getPosition().x, _cursor.getPosition().y);
     initializeForSendingData();
 }
 
 void Nokia_5110::print(char text[]){
-    setCursor(_cursorPositionX, _cursorPositionY);
+    setCursor(_cursor.getPosition().x, _cursor.getPosition().y);
 
     initializeForSendingData();
     
@@ -117,7 +119,7 @@ void Nokia_5110::print(char text[]){
         }
 
         transmitInformation(0x0); // add an empty line after each chars
-        moveCursorInXAxis(byteArrayLength + 1);
+        _cursor.moveInXAxis(byteArrayLength + 1);
 
         i++;
     }
@@ -126,57 +128,22 @@ void Nokia_5110::print(char text[]){
 
 void Nokia_5110::println(char text[]){
     print(text);
-    moveCursorInYAxis(1);
+    _cursor.moveInYAxis(1);
 }
 
-/**
- * Moves cursor in x axis by a number sepcified in method's parameter
- */
-void Nokia_5110::moveCursorInXAxis(unsigned int by){
-    if(by == 0)
-        return;
-    
-    _cursorPositionX++;
-
-    if(_cursorPositionX > 83){
-        moveCursorInYAxis(1);
-        _cursorPositionX = 0;
-    }
-
-    moveCursorInXAxis(--by);
-}
-
-/**
- * Moves cursor in y axis by a number sepcified in method's parameter
- */
-void Nokia_5110::moveCursorInYAxis(unsigned int by){
-    if(by == 0)
-        return;
-
-    _cursorPositionY++;
-    _cursorPositionX = 0; // for each y incrementation, reset the x axis :D
-
-    if(_cursorPositionY > 5){
-        _cursorPositionY = 0;
-    }
-
-    moveCursorInYAxis(--by);
-}
-
-void Nokia_5110::setCursor(unsigned int xPosition, unsigned int yPosition){
-    _cursorPositionX = xPosition;
-    _cursorPositionY = yPosition;
+void Nokia_5110::setCursor(unsigned int positionX, unsigned int positionY){
+    _cursor.setCursor(positionX, positionY);
 
     basicInstruction();
 
     //set x position
     unsigned short int leastXPositionValue = 128;
-    execute(byte(leastXPositionValue + xPosition));
+    execute(byte(leastXPositionValue + positionX));
 
 
     //set y position
     unsigned short int leastYPositionValue = 64;
-    execute(byte(leastYPositionValue + yPosition));
+    execute(byte(leastYPositionValue + positionY));
 }
 
 void Nokia_5110::clear(){

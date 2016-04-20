@@ -4,6 +4,7 @@
 #include "Arduino.h"
 #include "Display_Mode.h"
 #include "Mux_Rate.h"
+#include "Cursor.h"
 
 class Nokia_5110 {
 
@@ -15,7 +16,7 @@ class Nokia_5110 {
         void println(char text[]);
         void clear();
         void clear(unsigned int inRow, unsigned int fromColumn, unsigned int toColumn);
-        void setCursor(unsigned int xPosition, unsigned int yPosition);
+        void setCursor(unsigned int positionX, unsigned int positionY);
         void setDisplayMode(display_mode mode);
         void setBiasSystem(mux_rate rate);
         
@@ -37,11 +38,7 @@ class Nokia_5110 {
         unsigned short _DIN;
         unsigned short _CLK;
 
-        unsigned short int _cursorPositionY = 0;
-        unsigned short int _cursorPositionX = 0;
-        void moveCursorInXAxis(unsigned int by);
-        void moveCursorInYAxis(unsigned int by);
-
+        Cursor _cursor;
 };
 
 #endif
