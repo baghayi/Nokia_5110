@@ -2,8 +2,8 @@
 #define NOKIA_5110_H
 
 #include "Arduino.h"
+#include "Display_Mode.h"
 
-typedef byte display_mode;
 typedef byte mux_rate;
 
 class Nokia_5110 {
@@ -17,14 +17,6 @@ class Nokia_5110 {
         void clear();
         void clear(unsigned int inRow, unsigned int fromColumn, unsigned int toColumn);
         void setCursor(unsigned int xPosition, unsigned int yPosition);
-        
-        class Display_Mode {
-            public:
-                static const display_mode BLANK = 0x8;
-                static const display_mode NORMAL = 0xc;
-                static const display_mode ALL_SEGMENTS_ON = 0x9;
-                static const display_mode INVERSE_VIDEO = 0xd;
-        };
         void setDisplayMode(display_mode mode);
 
         class Mux_Rate {
