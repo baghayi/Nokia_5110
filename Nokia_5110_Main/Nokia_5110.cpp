@@ -19,10 +19,8 @@ Nokia_5110::Nokia_5110(unsigned short RST, unsigned short CE, unsigned short DC,
 
     clear();
     setDisplayMode(Nokia_5110::Display_Mode::NORMAL);
+    setBiasSystem(Nokia_5110::Mux_Rate::FORTY);
     setContrast(60);
-
-    extendedInstruction();
-    execute(0x14); // LCD bias mode 1:40
 }
 
 void Nokia_5110::startTransmission(){
@@ -217,4 +215,10 @@ void Nokia_5110::clear(unsigned int inRow, unsigned int fromColumn, unsigned int
 void Nokia_5110::setDisplayMode(display_mode value){
     basicInstruction();
     execute(value);
+}
+
+
+void Nokia_5110::setBiasSystem(mux_rate rate){
+    extendedInstruction();
+    execute(rate);
 }
