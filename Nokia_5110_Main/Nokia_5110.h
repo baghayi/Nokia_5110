@@ -15,8 +15,8 @@ class Nokia_5110 {
         void print(char text[]);
         void println(char text[]);
         void clear();
-        void clear(unsigned int inRow, unsigned int fromColumn, unsigned int toColumn);
-        void setCursor(unsigned int positionX, unsigned int positionY);
+        void clear(position inRow, position fromColumn, position toColumn);
+        void setCursor(position x, position y);
         void setDisplayMode(display_mode mode);
         void setBiasSystem(mux_rate rate);
         

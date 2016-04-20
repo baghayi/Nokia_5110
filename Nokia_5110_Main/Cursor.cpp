@@ -1,22 +1,22 @@
 #include "Cursor.h"
 
-void Cursor::setCursor(unsigned int positionX, unsigned int positionY){
-    _positionX = positionX;
-    _positionY = positionY;
+void Cursor::setCursor(position x, position y){
+    _x = x;
+    _y = y;
 }
 
 /**
  * Moves cursor in x axis by a number sepcified in method's parameter
  */
-void Cursor::moveInXAxis(unsigned int by){
+void Cursor::moveInXAxis(position by){
     if(by == 0)
         return;
     
-    _positionX++;
+    _x++;
 
-    if(_positionX > 83){
+    if(_x > 83){
         moveInYAxis(1);
-        _positionX = 0;
+        _x = 0;
     }
 
     moveInXAxis(--by);
@@ -25,15 +25,15 @@ void Cursor::moveInXAxis(unsigned int by){
 /**
  * Moves cursor in y axis by a number sepcified in method's parameter
  */
-void Cursor::moveInYAxis(unsigned int by){
+void Cursor::moveInYAxis(position by){
     if(by == 0)
         return;
 
-    _positionY++;
-    _positionX = 0; // for each y incrementation, reset the x axis :D
+    _y++;
+    _x = 0; // for each y incrementation, reset the x axis :D
 
-    if(_positionY > 5){
-        _positionY = 0;
+    if(_y > 5){
+        _y = 0;
     }
 
     moveInYAxis(--by);
@@ -44,8 +44,8 @@ void Cursor::moveInYAxis(unsigned int by){
  */
 Position Cursor::getPosition(){
     Position currentPosition;
-    currentPosition.y = _positionY;
-    currentPosition.x = _positionX;
+    currentPosition.y = _y;
+    currentPosition.x = _x;
 
     return currentPosition;
 }

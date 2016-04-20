@@ -131,19 +131,19 @@ void Nokia_5110::println(char text[]){
     _cursor.moveInYAxis(1);
 }
 
-void Nokia_5110::setCursor(unsigned int positionX, unsigned int positionY){
-    _cursor.setCursor(positionX, positionY);
+void Nokia_5110::setCursor(position x, position y){
+    _cursor.setCursor(x, y);
 
     basicInstruction();
 
     //set x position
     unsigned short int leastXPositionValue = 128;
-    execute(byte(leastXPositionValue + positionX));
+    execute(byte(leastXPositionValue + x));
 
 
     //set y position
     unsigned short int leastYPositionValue = 64;
-    execute(byte(leastYPositionValue + positionY));
+    execute(byte(leastYPositionValue + y));
 }
 
 void Nokia_5110::clear(){
@@ -158,16 +158,16 @@ void Nokia_5110::clear(){
     setCursor(0, 0);
 }
 
-void Nokia_5110::clear(unsigned int inRow, unsigned int fromColumn, unsigned int toColumn){
+void Nokia_5110::clear(position inRow, position fromColumn, position toColumn){
     // toColumn has to be more than from Column, otherwise flip the values :D
-    unsigned int temp;
+    position temp;
     if(fromColumn > toColumn){
         temp       = fromColumn;
         fromColumn = toColumn;
         toColumn   = temp;
     }
 
-    unsigned int counter = fromColumn;
+    position counter = fromColumn;
     while(counter <= toColumn){
         setCursor(counter, inRow);
         initializeForSendingData();
