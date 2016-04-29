@@ -1,3 +1,6 @@
+byte *findCorespondingByte(char character, unsigned short int &byteArrayLength);
+
+
 byte characters[1][7] = {
     {0x7c, 0x12, 0x11, 0x12, 0x7c} // A  (0)
 };
