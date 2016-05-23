@@ -2,6 +2,8 @@
 #include "Nokia_5110.h"
 #include "Font.h"
 
+Nokia_5110::Nokia_5110(){}
+
 Nokia_5110::Nokia_5110(unsigned short RST, unsigned short CE, unsigned short DC, unsigned short DIN, unsigned short CLK){
     _RST = RST;
     _CE = CE;
