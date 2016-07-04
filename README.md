@@ -102,10 +102,14 @@ So, let me list and explain each and every API availabe in your program by this 
 	This method as its parameter expects a hex value. But it is not nice, is it? :D. For ease of use, driver has four constants defined with respective display mode hex values as their values. So you only need to pass those constant as parameter value instead of hex values.
 
 	Defined constants for display mode are as follows:	
-	`Display_Mode::BLANK` is for a blank display.
-	`Display_Mode::NORMAL` is normal mode, which by default is set by the driver.
-	`Display_Mode::ALL_SEGMENTS_ON` for turning all segments (pixels) on.
-	`Display_Mode::INVERSE_VIDEO` In normal mode, you have black text in a white background. This mode is the inverse of normal mode (white text in a black background).
+
+`Display_Mode::BLANK` is for a blank display.
+
+`Display_Mode::NORMAL` is normal mode, which by default is set by the driver.
+
+`Display_Mode::ALL_SEGMENTS_ON` for turning all segments (pixels) on.
+
+`Display_Mode::INVERSE_VIDEO` In normal mode, you have black text in a white background. This mode is the inverse of normal mode (white text in a black background).
 
 
 - void **setBiasSystem**(mux_rate rate);
@@ -113,14 +117,22 @@ So, let me list and explain each and every API availabe in your program by this 
 	This method is for system biasing. For setting the view angle. By default by the driver it is set to `Mux_Rate::FORTY`, but you can change it any time you want. Not to mention that by changing it, you may also need to change the contrast value of the display.
 
 	Like `setDisplayMode` you need to pass a hex value as its parameter, but for ease of use, for all of available biasing hex values, constant values is defined. List of constants are as follows:
-	`Mux_Rate::HUNDRED`
-	`Mux_Rate::EIGHTY`
-	`Mux_Rate::SIXTY_FIVE`
-	`Mux_Rate::FORTY_EIGHT`
-	`Mux_Rate::FORTY`
-	`Mux_Rate::TWENTY_FOUR`
-	`Mux_Rate::EIGHTEEN`
-	`Mux_Rate::TEN`
+	
+`Mux_Rate::HUNDRED`
+
+`Mux_Rate::EIGHTY`
+
+`Mux_Rate::SIXTY_FIVE`
+
+`Mux_Rate::FORTY_EIGHT`
+
+`Mux_Rate::FORTY`
+
+`Mux_Rate::TWENTY_FOUR`
+
+`Mux_Rate::EIGHTEEN`
+
+`Mux_Rate::TEN`
 
 For more information on this topic, please refer to datasheet.
 
