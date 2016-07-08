@@ -6,22 +6,25 @@
 #include "Mux_Rate.h"
 #include "Cursor.h"
 
-class Nokia_5110 {
+class Nokia_5110 : public Print {
 
     public:
         Nokia_5110();
         Nokia_5110(unsigned short RST, unsigned short CE, unsigned short DC, unsigned short DIN, unsigned short CLK);
         void setContrast(unsigned short value);
         void setTemperatureCoefficient(unsigned short value);
-        void print(char text[]);
-        void println(char text[]);
         void clear();
         void clear(position inRow, position fromColumn, position toColumn);
         void setCursor(position x, position y);
         void setDisplayMode(display_mode mode);
         void setBiasSystem(mux_rate rate);
+        virtual size_t write(uint8_t);
+        //virtual size_t write(const char *str);
+        //virtual size_t write(const uint8_t *buffer, size_t size);
         
     private:
+        void _print(uint8_t charAsciiCode);
+        //void _println(uint8_t character);
         void startTransmission();
         void endTransmission();
         void transmitInformation(byte information);
@@ -43,3 +46,4 @@ class Nokia_5110 {
 };
 
 #endif
+

@@ -103,32 +103,28 @@ void Nokia_5110::makeEnoughSpaceForPrinting(unsigned short int newCharacterLengt
     initializeForSendingData();
 }
 
-void Nokia_5110::print(char text[]){
+void Nokia_5110::_print(uint8_t charAsciiCode){
     setCursor(_cursor.getPosition().x, _cursor.getPosition().y);
 
     initializeForSendingData();
     
-    int i = 0;
-    while(text[i]){
-        character fontByte = findCorespondingByte(text[i]);
-        makeEnoughSpaceForPrinting(fontByte.definition_total_bytes);
-        
-        for(unsigned int i = 0; i < fontByte.definition_total_bytes; i++){
-            transmitInformation(fontByte.definition[i]);
-        }
+    character fontData = findCorrespondingByte(charAsciiCode);
+    makeEnoughSpaceForPrinting(fontData.definition_total_bytes);
 
-        transmitInformation(0x0); // add an empty line after each chars
-        _cursor.moveXAxis(fontByte.definition_total_bytes + 1);
-
-        i++;
+    for(unsigned int i = 0; i < fontData.definition_total_bytes; i++){
+        transmitInformation(fontData.definition[i]);
     }
 
+    transmitInformation(0x0); // add an empty line after each chars
+    _cursor.moveXAxis(fontData.definition_total_bytes + 1);
 }
 
-void Nokia_5110::println(char text[]){
-    print(text);
-    _cursor.moveYAxis(1);
-}
+/*
+ *void Nokia_5110::_println(char text[]){
+ *    _print(text);
+ *    _cursor.moveYAxis(1);
+ *}
+ */
 
 void Nokia_5110::setCursor(position x, position y){
     _cursor.setCursor(x, y);
@@ -188,3 +184,9 @@ void Nokia_5110::setBiasSystem(mux_rate rate){
     extendedInstruction();
     execute(rate);
 }
+
+size_t Nokia_5110::write(uint8_t character) {
+    _print(character);
+    return 1;
+}
+
