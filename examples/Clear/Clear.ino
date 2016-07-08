@@ -36,10 +36,7 @@ void hours(){
     }
 
     lcd.clear(3, 15, 25); // This is another way of using clear method. It only clears a portion of the screen
-
-    char temp[3];
-    dtostrf(hours, 2, 0, temp); // converts integer to char datatype
-    lcd.print(temp);
+    lcd.print(hours);
 }
 
 void minutes(){
@@ -53,10 +50,7 @@ void minutes(){
     }
 
     lcd.clear(3, 36, 46); // This is another way of using clear method. It only clears a portion of the screen
-    
-    char temp[3];
-    dtostrf(minutes, 2, 0, temp); // converts integer to char datatype
-    lcd.print(temp);
+    lcd.print(minutes);
 }
 
 void seconds(){
@@ -70,10 +64,7 @@ void seconds(){
     }
 
     lcd.clear(3, 57, 70); // This is another way of using clear method. It only clears a portion of the screen
-
-    char temp[3];
-    dtostrf(seconds, 2, 0, temp); // converts integer to char datatype
-    lcd.print(temp);
+    lcd.print(seconds);
 }
 
 void timer(){
