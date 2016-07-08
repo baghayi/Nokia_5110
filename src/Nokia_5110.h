@@ -22,7 +22,6 @@ class Nokia_5110 : public Print {
         
     private:
         void _print(uint8_t charAsciiCode);
-        //void _println(uint8_t character);
         void startTransmission();
         void endTransmission();
         void transmitInformation(byte information);

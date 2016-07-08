@@ -104,6 +104,12 @@ void Nokia_5110::makeEnoughSpaceForPrinting(unsigned short int newCharacterLengt
 }
 
 void Nokia_5110::_print(uint8_t charAsciiCode){
+
+    if (charAsciiCode == 0x0a){ // \n for jumping to the beginning of a new line.
+        _cursor.moveYAxis(1);
+        return;
+    }
+
     setCursor(_cursor.getPosition().x, _cursor.getPosition().y);
 
     initializeForSendingData();
@@ -118,13 +124,6 @@ void Nokia_5110::_print(uint8_t charAsciiCode){
     transmitInformation(0x0); // add an empty line after each chars
     _cursor.moveXAxis(fontData.definition_total_bytes + 1);
 }
-
-/*
- *void Nokia_5110::_println(char text[]){
- *    _print(text);
- *    _cursor.moveYAxis(1);
- *}
- */
 
 void Nokia_5110::setCursor(position x, position y){
     _cursor.setCursor(x, y);
