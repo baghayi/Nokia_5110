@@ -19,8 +19,6 @@ class Nokia_5110 : public Print {
         void setDisplayMode(display_mode mode);
         void setBiasSystem(mux_rate rate);
         virtual size_t write(uint8_t);
-        //virtual size_t write(const char *str);
-        //virtual size_t write(const uint8_t *buffer, size_t size);
         
     private:
         void _print(uint8_t charAsciiCode);
