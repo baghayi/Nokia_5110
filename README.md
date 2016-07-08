@@ -56,18 +56,24 @@ So, let me list and explain each and every API availabe in your program by this 
 	This method accepts a value between 0 and 3 (0 >= value <= 3) as its parameter.
 
 
-- void **print**(char text[]);
+- void **print**(value);
+- void **print**(value, format);
+- void **println**(value);
+- void **println**(value, format);
 
-	This method lets us display information on the LCD. It prints data that is passed to its parameter on the LCD.
+	These methods lets us display information on the LCD. It prints data that is passed to its parameter on the LCD.
 
 	At the moment, English upper and lower characters are supported. Numbers and some other characters are supported as well. For the list of supported characters please refer to the `src/Font.h` file.
 
 	Note: In case of unknown characters, question mark (?) will be displayed, instead.
 
+	`println` method works exactly like `print` method, only with the exception of jumping to the next line after printing the last character.
 
-- void **println**(char text[]);
+	Since this driver uses built-in Print class, which is what provided by the Arduino, they work exactly like print and println methods in Serial and LiquidCrystal libraries.
 
-	Works just like `print` method, only with the exception of jumping to the next line after printing the last character.
+	They can accept different data types, such as string, char, integers and etc.
+
+	For more information on these methods parameters, check out this link: `https://www.arduino.cc/en/Serial/Print`
 
 
 - void **clear**();
