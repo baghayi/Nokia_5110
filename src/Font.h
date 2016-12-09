@@ -10,7 +10,7 @@ struct character {
 
 character findCorrespondingByte(uint8_t ascii_code);
 
-const character characters[] = {
+const character characters[] PROGMEM = {
     character{'?', 0x3f, {0x2, 0x1, 0x51, 0x9, 0x6}, 5}, // NOTE: Please do not move question mark from the first (0) :D position. (Developers life depends on it baby)
     character{'A', 0x41, {0x7c, 0x12, 0x11, 0x12, 0x7c}, 5},
     character{'B', 0x42, {0x7F, 0x49, 0x49, 0x49, 0x36}, 5},
@@ -111,11 +111,15 @@ const character characters[] = {
 
 character findCorrespondingByte(uint8_t ascii_code){
     unsigned short int total_characters = sizeof(characters) / sizeof(*characters);
-
-    for (unsigned short int i = 0; i < total_characters; i++)
-        if (characters[i].ascii_code == ascii_code) return characters[i];
-
-    return characters[0]; // if nothing is found, then return question mark (?).
+	character temp;
+	
+    for (unsigned short int i = 0; i < total_characters; i++) {
+		//Retrieve character from FLASH MEMORY
+		memcpy_P(&temp, &characters[i], sizeof(character));
+        if (temp.ascii_code == ascii_code) return temp;
+	}
+	memcpy_P(&temp, &characters[0], sizeof(character));
+    return temp; // if nothing is found, then return question mark (?).
 }
 
 #endif
