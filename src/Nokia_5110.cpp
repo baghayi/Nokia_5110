@@ -95,7 +95,7 @@ void Nokia_5110::initializeForSendingData(){
 }
 
 void Nokia_5110::makeEnoughSpaceForPrinting(unsigned short int newCharacterLength){
-    if((newCharacterLength + _cursor.getPosition().x) < 83)
+    if((newCharacterLength + _cursor.getPosition().x) < 85)
         return;
 
     _cursor.moveYAxis(1);
